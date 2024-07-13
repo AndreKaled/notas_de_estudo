@@ -1,0 +1,1 @@
+# curiosidades_algoritmos
