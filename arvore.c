@@ -18,7 +18,7 @@ Arvore* insereDado(Arvore *no, int dado){
         no->dir = NULL;
         no->esq = NULL;
         no->dado = dado;
-    }else if(no->dado <= dado)
+    }else if(no->dado > dado)
         no->esq = insereDado(no->esq, dado);
     else
         no->dir = insereDado(no->dir, dado);
@@ -40,6 +40,22 @@ void preOrdem(Arvore* no){
     }
 }
 
+void emOrdem(Arvore* no){
+    if(no != NULL){ 
+        emOrdem(no->esq);
+        printf("%d ", no->dado);
+        emOrdem(no->dir);
+    }
+}
+
+void posOrdem(Arvore* no){
+    if(no != NULL){ 
+        posOrdem(no->esq);
+        posOrdem(no->dir);
+        printf("%d ", no->dado);
+    }
+}
+
 #define TAM 7
 void main(){
     Arvore *arvore;
@@ -47,5 +63,9 @@ void main(){
     arvore = iniciaArvore();
     arvore = inserePorVetor(arvore, v, TAM);
     preOrdem(arvore);
+    printf("\n");
+    emOrdem(arvore);
+    printf("\n");
+    posOrdem(arvore);
     printf("\n");
 }
